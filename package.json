@@ -1,17 +1,33 @@
 {
   "name": "devhost",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "tsup --watch --config tsup.dev.ts --onSuccess \"node --inspect=0.0.0.0:9229 dist/index.mjs\""
-  },
-  "keywords": [],
-  "author": "",
+  "version": "1.0.4",
+  "description": "The devhost client",
   "license": "ISC",
+  "homepage": "https://suntzu.me/devhost",
+  "keywords": [
+    "proxy",
+    "development"
+  ],
+  "author": "Sun Tzu",
+  "bin": {
+    "mypackage": "dist/index.cjs"
+  },
+  "files": [
+    "dist/",
+    "bin/",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "node src/index.ts",
+    "build": "esbuild src/index.ts --bundle --minify --platform=node --target=node20 --outfile=dist/index.cjs --banner:js='#!/usr/bin/env node'",
+    "start": "node dist/index.cjs",
+    "lint": "eslint",
+    "test": "node --use-system-ca scripts/example.com.test.ts"
+  },
+  "type": "module",
   "packageManager": "pnpm@10.8.1",
   "dependencies": {
-    "body-parser": "^2.2.0",
+    "chalk": "^5.4.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "http-proxy-middleware": "^3.0.5",
@@ -22,9 +38,13 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.1",
+    "esbuild": "^0.25.3",
     "eslint": "^9.25.0",
-    "tsup": "^8.4.0",
+    "jiti": "^2.4.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.30.1"
+  },
+  "imports": {
+    "#*": "./src/*.ts"
   }
 }
