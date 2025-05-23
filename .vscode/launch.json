@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "debug",
       "skipFiles": ["<node_internals>/**"],
-      "command": "nvm use 23 && pnpm dev"
+      "command": "pnpm dev"
     }
   ]
 }
