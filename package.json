@@ -1,12 +1,12 @@
 {
   "name": "devhost",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "type": "module",
   "packageManager": "pnpm@10.8.1",
   "scripts": {
     "dev": "node src/index.ts",
-    "star": "node build/dist/index.cjs",
-    "build": "rm -rf build && esbuild src/index.ts --bundle --minify --platform=node --target=node20 --outfile=build/dist/index.cjs --banner:js='#!/usr/bin/env node' && cp -r src/bin build/bin && cp LICENSE build/LICENSE && node scripts/generate-build-package-json.js",
+    "start": "node build/dist/index.cjs",
+    "build": "rm -rf build && esbuild src/index.ts --bundle --minify --platform=node --target=node20 --outfile=build/dist/index.cjs --banner:js='#!/usr/bin/env node --no-warnings' && cp -r src/bin build/bin && cp LICENSE build/LICENSE && node scripts/generate-build-package-json.js",
     "lint": "eslint",
     "test": "node --use-system-ca tests/www.example.com.test.ts"
   },
