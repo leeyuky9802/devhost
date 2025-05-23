@@ -21,13 +21,14 @@ try {
 const MKCERT_PATH = path.join(
   currentDir,
   "../bin",
-  process.platform + "-" + process.arch
+  process.platform +
+    "-" +
+    process.arch +
+    (process.platform === "win32" ? ".exe" : "")
 );
 
 /**
  * The path to the dir of certs
- * when it's root, ~/.devhost/root
- * when it's user, ~/.devhost/user
  */
 const CERT_DIR = path.join(os.homedir(), ".devhost");
 
